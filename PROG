@@ -1,0 +1,101 @@
+/*
+Insira os integrantes do seu grupo aqui:
+lincoln Kaye gomes filho
+
+
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+#define l 24
+#define c 7
+
+int main(){
+int i,j;
+  float aux,aux2;
+  float soma=0, media=0,max=0,min=1000;
+float temperatura[l][c] = {{46,44,45,49,59,46,43},{49,43,42,56,59,48,47},{63,42,48,58,59,45,48},{46,48,49,59,59,49,49},{48,49,56,59,59,51,51},{45,70,57,49,59,49,59},{44,41,45,49,52,46,63},{46,44,45,49,59,46,43},{49,43,42,56,59,48,47},{63,42,48,58,59,45,48},{46,48,49,59,59,49,49},{48,49,56,59,59,51,51},{45,70,57,49,59,49,59},{44,41,45,49,52,46,63},{46,44,45,49,59,46,43},{49,43,42,56,59,48,47},{63,42,48,58,59,45,48},{46,48,49,59,59,49,49},{48,49,56,59,59,51,51},{45,70,57,49,59,49,59},{44,41,45,49,52,46,63},{48,49,56,59,59,51,51},{43,44,44,45,46,46,47},{46,44,45,49,59,46,43}};
+float tempServMedia[c]={0};
+
+system("clear"); // limpa a tela
+
+printf("******** TABELA DE TEMPERATURAS *******\n\n");
+// imprimindo a matriz
+printf("HORA\tSERV0\tSERV1\tSERV2\tSERV3\tSERV4\tSERV5\tSERV6\n");
+for(i=0;i<l;i++){
+  printf(" %dh:\t",i);
+  for(j=0;j<c;j++){
+    printf(" %.1f\t",temperatura[i][j]);
+  }
+  printf("\n");
+}
+printf("\n\n");
+
+printf("******** CALCULO DE TEMPERATURAS *******\n\n");
+// Seu código
+  for(int i=0;i<l;i++){
+    printf("HORA %d:\n",i);
+    for(int j=0;j<c;j++){
+    soma=soma+temperatura[i][j];
+    media=soma/c;
+    if(max<temperatura[i][j]){
+      max=temperatura[i][j];
+    }
+      if(min>temperatura[i][j]){
+      min=temperatura[i][j];
+      }
+  }
+    printf("Media: %.2f, Maxima: %.2f, Minima: %.2f\n",media,max,min);
+    media=0;
+  soma=0;
+    max=0;
+    min=1000;}
+
+printf("******** TEMPERATURA MÉDIA DOS SERVIDORES *******\n\n");
+// Seu código aqui. 
+// Lembre de usar o vetor tempServMedia
+  
+     
+  for(int i=0;i<c;i++){
+    printf("SERV%d= ",i);
+    for(int j=0;j<l;j++){
+      soma=soma+temperatura[j][i];
+      }
+    media=soma/l;
+    tempServMedia[i]=media;
+    printf("%.2f\n",tempServMedia[i]);
+    media=0;
+    soma=0;
+    }
+ 
+ 
+    
+    printf("\n");
+    
+    
+
+printf("********TABELA DE TEMPERATURAS C/ TEMPS ACIMA DA MEDIA*******\n\n");
+// Seu código aqui. 
+
+      printf("HORA\tSERV0\tSERV1\tSERV2\tSERV3\tSERV4\tSERV5\tSERV6\n");
+for(i=0;i<l;i++){
+  printf(" %dh:\t",i);
+  for(j=0;j<c;j++){
+   aux=tempServMedia[j]+2.9;
+    aux2=tempServMedia[j]+3.0;
+    if(temperatura[i][j]>tempServMedia[j]&&temperatura[i][j]<=aux){
+    printf(" %.1f*\t",temperatura[i][j]);}
+    else if(temperatura[i][j]>tempServMedia[j]&&temperatura[i][j]>=aux2){
+      printf(" %.1f**\t",temperatura[i][j]);
+    }
+    else{
+      printf(" %.1f\t",temperatura[i][j]);
+    }
+    
+  }
+  printf("\n");
+}
+printf("\n\n");
+return 0;
+}
